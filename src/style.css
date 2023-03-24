@@ -1,3 +1,10 @@
+:root {
+    --bright-blue: #51e2f5;
+    --blue-green: #9df9ef;
+    --dusty-white: #edf7f6;
+    --header-height: 0px;
+}
+
 body {
     margin: 0;
     background-color: #F3D5BA;
@@ -10,11 +17,19 @@ li {
 header {
     display: flex;
     justify-content: space-between;
+    background-color: var(--bright-blue);
 }
 
 header div {
     display: grid;
     grid-template: 1fr / 1fr 1fr 1fr;
+    gap: 1em;
+}
+
+header button {
+    background-color: var(--blue-green);
+    border: none;
+    cursor: pointer;
 }
 
 h1 {
@@ -28,7 +43,8 @@ h1 {
     background-size: cover;
     position: relative;
     background-position: center;
-    height: 100%;
+    /* min-height: 100vh; */
+    min-height: calc(100vh - var(--header-height));
 }
 
 .panel, .content {
@@ -37,5 +53,6 @@ h1 {
 
 .content {
     padding: 2em;
-    background-color: #F3D5BA;
+    background-color: var(--dusty-white);
+    box-shadow: 0px 10px 20px -10px rgba(0, 0, 0, 0.75) inset;
 }
