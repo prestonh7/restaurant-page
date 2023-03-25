@@ -1,0 +1,2 @@
+(self.webpackChunkrestaurant_page=self.webpackChunkrestaurant_page||[]).push([[179],{138:()=>{console.log("working!")}},e=>{e(e.s=138)}]);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibWFpbi41NTM1YTFiMzJjNDU1M2RlZGU5NC5qcyIsIm1hcHBpbmdzIjoiOEZBQUFBLFFBQVFDLElBQUksVyIsInNvdXJjZXMiOlsid2VicGFjazovL3Jlc3RhdXJhbnQtcGFnZS8uL3NyYy9pbmRleC5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyJjb25zb2xlLmxvZygnd29ya2luZyEnKTtcbiJdLCJuYW1lcyI6WyJjb25zb2xlIiwibG9nIl0sInNvdXJjZVJvb3QiOiIifQ==
