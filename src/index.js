@@ -26,17 +26,15 @@ const homeScreen = (() => {
 
 const displayController = (() => {
     const content = document.querySelector('.content');
-    const homeBtn  = document.getElementById('homeBtn');
-    homeBtn.addEventListener('click', updateContent('home'));
     
     function updateContent(page) {
         clearContent();
-        if (page === 'home') {
-            homeScreen.drawContent();
-        } else if (page === 'products') {
-
-        } else if (page === 'contactUs') {
-
+        if (page === home) {
+            home.drawContent();
+        } else if (page === products) {
+            products.drawContent();
+        } else if (page === contactUs) {
+            contactUs.drawContent();
         }
     }
 
@@ -45,4 +43,17 @@ const displayController = (() => {
     }
 
     return { updateContent }
+});
+
+const display = displayController();
+const home = homeScreen();
+
+home.drawContent();
+
+const homeBtn  = document.getElementById('homeBtn');
+const productsBtn = document.getElementById('productsBtn');
+const contactBtn = document.getElementById('contactBtn');
+
+homeBtn.addEventListener('click', () => {
+    display.updateContent(home);
 });
