@@ -30,6 +30,7 @@ header button {
     background-color: var(--blue-green);
     border: none;
     cursor: pointer;
+    margin-right: 1em;
 }
 
 h1 {
