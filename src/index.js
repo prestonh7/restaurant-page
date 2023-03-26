@@ -1,4 +1,6 @@
 import "./style.css";
+import chocoCroissant from "./chocolate-croissant.jpg"
+import chocoCookie from "./cookie.jpg"
 
 const heightAdjust = (() => { 
     const header = document.querySelector('header');
@@ -10,7 +12,6 @@ const homeScreen = (() => {
     const content = document.querySelector('.content');
 
     function drawContent() {
-        content.setAttribute('id', 'home');
         const para = document.createElement('p');
         para.textContent = "Welcome to Whisk Me Away Bakery, where every bite is a sweet escape! \
         Our expert bakers use only the finest ingredients to create delicious treats \
@@ -26,14 +27,12 @@ const homeScreen = (() => {
 });
 
 class Product {
-    static productList = [];
-
     constructor(name, price, img) {
         this.name = name;
         this.price = price;
         this.img = img;
 
-        Product.productList.push(this);
+        display.productList.push(this);
     }
 
     render() {
@@ -55,46 +54,55 @@ class Product {
 
         return productElement;
     }
-
-    static renderProducts() {
-        const productList = document.querySelector("#product");
-        Product.productList.forEach(product => {
-            const productElement = product.render();
-            productList.appendChild(productElement);
-    });
-  }
 }
 
 const displayController = (() => {
     const content = document.querySelector('.content');
+    const productList = [];
     
     function updateContent(page) {
         clearContent();
-        if (page === home) {
+        if (page === 'home') {
+            content.setAttribute('id', 'home');
             home.drawContent();
-        } else if (page === products) {
-            products.drawContent();
-        } else if (page === contactUs) {
+        } else if (page === 'products') {
+            content.setAttribute('id', 'products');
+            renderProducts();
+        } else if (page === 'contactUs') {
+            content.setAttribute('id', 'contactUs');
             contactUs.drawContent();
         }
+    }
+
+    function renderProducts() {
+        productList.forEach(product => {
+            const productElement = product.render();
+            content.appendChild(productElement);
+        })
     }
 
     function clearContent() {
         content.innerText = '';
     }
 
-    return { updateContent }
+    return { updateContent , productList }
 });
 
 const display = displayController();
 const home = homeScreen();
+const croissant = new Product("Chocolate Croissant", 2.50, chocoCroissant);
+const cookie = new Product("Chocolate Chip Cookie", 1.25, chocoCookie);
 
-home.drawContent();
+display.updateContent('home');
 
 const homeBtn  = document.getElementById('homeBtn');
 const productsBtn = document.getElementById('productsBtn');
 const contactBtn = document.getElementById('contactBtn');
 
 homeBtn.addEventListener('click', () => {
-    display.updateContent(home);
+    display.updateContent('home');
+});
+
+productsBtn.addEventListener('click', () => {
+    display.updateContent('products');
 });
