@@ -10,6 +10,7 @@ const homeScreen = (() => {
     const content = document.querySelector('.content');
 
     function drawContent() {
+        content.setAttribute('id', 'home');
         const para = document.createElement('p');
         para.textContent = "Welcome to Whisk Me Away Bakery, where every bite is a sweet escape! \
         Our expert bakers use only the finest ingredients to create delicious treats \
@@ -23,6 +24,46 @@ const homeScreen = (() => {
 
     return { drawContent }
 });
+
+class Product {
+    static productList = [];
+
+    constructor(name, price, img) {
+        this.name = name;
+        this.price = price;
+        this.img = img;
+
+        Product.productList.push(this);
+    }
+
+    render() {
+        const productElement = document.createElement("div");
+        productElement.classList.add("product");
+
+        const imageElement = document.createElement("img");
+        imageElement.setAttribute("src", this.img);
+
+        const nameElement = document.createElement("h2");
+        nameElement.textContent = this.name;
+
+        const priceElement = document.createElement("p");
+        priceElement.textContent = `$${this.price.toFixed(2)}`;
+
+        productElement.appendChild(imageElement);
+        productElement.appendChild(nameElement);
+        productElement.appendChild(priceElement);
+
+        return productElement;
+    }
+
+    static renderProducts() {
+        const productList = document.querySelector("#product");
+        Product.productList.forEach(product => {
+            const productElement = product.render();
+            productList.appendChild(productElement);
+    });
+  }
+}
 
 const displayController = (() => {
     const content = document.querySelector('.content');
