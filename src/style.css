@@ -7,7 +7,7 @@
 
 body {
     margin: 0;
-    background-color: #F3D5BA;
+    background-color: var(--dusty-white);
 }
 
 li {
@@ -69,4 +69,21 @@ h1 {
     max-width: 75ch;
     word-wrap: break-word;
     overflow-wrap: break-word;
+}
+
+#products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: .5em;
+}
+
+#products img {
+    mix-blend-mode: multiply;
+    object-fit: cover;
+    width: 100%;
+    max-height: 100%;
+}
+
+.product {
+    text-align: center;
 }
