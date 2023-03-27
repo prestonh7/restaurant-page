@@ -1,6 +1,10 @@
 import "./style.css";
-import chocoCroissant from "./chocolate-croissant.jpg"
-import chocoCookie from "./cookie.jpg"
+import chocoCroissant from "./images/chocolate-croissant.jpg"
+import chocoCookie from "./images/cookie.jpg"
+import berlinerDonut from "./images/berliner.jpg"
+import bread from "./images/bread.jpg"
+import cakeTart from "./images/caketart.jpg"
+import chocoCake from "./images/chococake.jpg"
 
 const heightAdjust = (() => { 
     const header = document.querySelector('header');
@@ -92,6 +96,10 @@ const display = displayController();
 const home = homeScreen();
 const croissant = new Product("Chocolate Croissant", 2.50, chocoCroissant);
 const cookie = new Product("Chocolate Chip Cookie", 1.25, chocoCookie);
+const berliner = new Product('Berliner Donut', 1.50, berlinerDonut);
+const breadLoaf = new Product('Bread', 4.00, bread);
+const tart = new Product('Cake Tart', 5.00, cakeTart);
+const chocolateCake = new Product('Chocolate Cake', 10.00, chocoCake);
 
 display.updateContent('home');
 
