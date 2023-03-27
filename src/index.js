@@ -23,7 +23,16 @@ const homeScreen = (() => {
         From our famous croissants to our decadent cakes, \
         everything we make is crafted with care and precision. \
         Browse our products to find your next sweet escape - \
-        you can access them from the header or click here to see our full range of treats."
+        you can access them from the header or "
+
+        const link = document.createElement("a");
+        link.textContent = "click here to see our full range of treats.";
+        link.href = "#";
+        link.addEventListener("click", function () {
+            updateContent("products");
+        });
+
+        para.appendChild(link);
         content.appendChild(para);
     }
 
