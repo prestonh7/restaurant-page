@@ -6,10 +6,6 @@ import bread from "./images/bread.jpg"
 import cakeTart from "./images/caketart.jpg"
 import chocoCake from "./images/chococake.jpg"
 
-const homeBtn  = document.getElementById('homeBtn');
-const productsBtn = document.getElementById('productsBtn');
-const contactBtn = document.getElementById('contactBtn');
-
 const heightAdjust = (() => { 
     const header = document.querySelector('header');
     const headerHeight = getComputedStyle(header).getPropertyValue('height');
@@ -73,9 +69,84 @@ class Product {
     }
 }
 
+const formScreen = (() => {
+    const content = document.querySelector('.content');
+
+    function drawContent() {
+        // Create the form element
+        const form = document.createElement('form');
+        form.id = 'contact-form';
+
+        // Create the name field
+        const nameDiv = document.createElement('div');
+        const nameLabel = document.createElement('label');
+        nameLabel.textContent = 'Name:';
+        const nameInput = document.createElement('input');
+        nameInput.type = 'text';
+        nameInput.id = 'name';
+        nameInput.name = 'name';
+        nameInput.required = true;
+        nameDiv.appendChild(nameLabel);
+        nameDiv.appendChild(nameInput);
+        form.appendChild(nameDiv);
+
+        // Create the email field
+        const emailDiv = document.createElement('div');
+        const emailLabel = document.createElement('label');
+        emailLabel.textContent = 'Email:';
+        const emailInput = document.createElement('input');
+        emailInput.type = 'email';
+        emailInput.id = 'email';
+        emailInput.name = 'email';
+        emailInput.required = true;
+        emailDiv.appendChild(emailLabel);
+        emailDiv.appendChild(emailInput);
+        form.appendChild(emailDiv);
+
+        // Create the message field
+        const messageDiv = document.createElement('div');
+        const messageLabel = document.createElement('label');
+        messageLabel.textContent = 'Message:';
+        const messageInput = document.createElement('textarea');
+        messageInput.id = 'message';
+        messageInput.name = 'message';
+        messageInput.required = true;
+        messageDiv.appendChild(messageLabel);
+        messageDiv.appendChild(messageInput);
+        form.appendChild(messageDiv);
+
+        // Create the submit button
+        const submitButton = document.createElement('button');
+        submitButton.type = 'submit';
+        submitButton.textContent = 'Send Message';
+        form.appendChild(submitButton);
+
+        // Add the form to the content div
+        content.appendChild(form);
+    }
+    
+    return { drawContent }
+});
+
 const displayController = (() => {
     const content = document.querySelector('.content');
     const productList = [];
+
+    const homeBtn  = document.getElementById('homeBtn');
+    const productsBtn = document.getElementById('productsBtn');
+    const contactBtn = document.getElementById('contactBtn');
+    
+    homeBtn.addEventListener('click', () => {
+        display.updateContent('home');
+    });
+
+    productsBtn.addEventListener('click', () => {
+        display.updateContent('products');
+    });
+
+    contactBtn.addEventListener('click', () => {
+        display.updateContent('contactUs');
+    });
     
     function updateContent(page) {
         clearContent();
@@ -117,6 +188,8 @@ const displayController = (() => {
 
 const display = displayController();
 const home = homeScreen();
+const contactUs = formScreen();
+
 const croissant = new Product("Chocolate Croissant", 2.50, chocoCroissant);
 const cookie = new Product("Chocolate Chip Cookie", 1.25, chocoCookie);
 const berliner = new Product('Berliner Donut', 1.50, berlinerDonut);
@@ -125,11 +198,3 @@ const tart = new Product('Cake Tart', 5.00, cakeTart);
 const chocolateCake = new Product('Chocolate Cake', 10.00, chocoCake);
 
 display.updateContent('home');
-
-homeBtn.addEventListener('click', () => {
-    display.updateContent('home');
-});
-
-productsBtn.addEventListener('click', () => {
-    display.updateContent('products');
-});
