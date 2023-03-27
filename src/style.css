@@ -23,11 +23,10 @@ header {
 header div {
     display: grid;
     grid-template: 1fr / 1fr 1fr 1fr;
-    gap: 1em;
 }
 
 header button {
-    background-color: var(--blue-green);
+    background-color: var(--bright-blue);
     border: none;
     cursor: pointer;
     margin-right: 1em;
