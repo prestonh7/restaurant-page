@@ -38,8 +38,9 @@ h1 {
 }
 
 .container {
-    display: flex;
-    background-image: url(./home-bread.jpg);
+    display: grid;
+    grid-template: 1fr / 1fr 1fr;
+    background-image: url(./images/home-bread.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
