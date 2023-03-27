@@ -6,6 +6,10 @@ import bread from "./images/bread.jpg"
 import cakeTart from "./images/caketart.jpg"
 import chocoCake from "./images/chococake.jpg"
 
+const homeBtn  = document.getElementById('homeBtn');
+const productsBtn = document.getElementById('productsBtn');
+const contactBtn = document.getElementById('contactBtn');
+
 const heightAdjust = (() => { 
     const header = document.querySelector('header');
     const headerHeight = getComputedStyle(header).getPropertyValue('height');
@@ -75,13 +79,17 @@ const displayController = (() => {
     
     function updateContent(page) {
         clearContent();
+        resetBtn();
         if (page === 'home') {
+            homeBtn.style.backgroundColor = 'var(--blue-green)'
             content.setAttribute('id', 'home');
             home.drawContent();
         } else if (page === 'products') {
+            productsBtn.style.backgroundColor = 'var(--blue-green)'
             content.setAttribute('id', 'products');
             renderProducts();
         } else if (page === 'contactUs') {
+            contactBtn.style.backgroundColor = 'var(--blue-green)'
             content.setAttribute('id', 'contactUs');
             contactUs.drawContent();
         }
@@ -98,6 +106,12 @@ const displayController = (() => {
         content.innerText = '';
     }
 
+    function resetBtn() {
+        homeBtn.style.backgroundColor = 'var(--bright-blue)'
+        productsBtn.style.backgroundColor = 'var(--bright-blue)'
+        contactBtn.style.backgroundColor = 'var(--bright-blue)'
+    }
+
     return { updateContent , productList }
 });
 
@@ -111,10 +125,6 @@ const tart = new Product('Cake Tart', 5.00, cakeTart);
 const chocolateCake = new Product('Chocolate Cake', 10.00, chocoCake);
 
 display.updateContent('home');
-
-const homeBtn  = document.getElementById('homeBtn');
-const productsBtn = document.getElementById('productsBtn');
-const contactBtn = document.getElementById('contactBtn');
 
 homeBtn.addEventListener('click', () => {
     display.updateContent('home');
