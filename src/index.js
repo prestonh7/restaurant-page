@@ -73,47 +73,48 @@ const formScreen = (() => {
     const content = document.querySelector('.content');
 
     function drawContent() {
+        const para = document.createElement('p');
+        const paraDiv = document.createElement('div');
+        para.textContent = `Thank you for visiting Whisk Me Away Bakery's Contact Us page! \
+            We're thrilled to offer custom orders that cater to your unique tastes and preferences. \
+            Whether you need assistance with an order, have feedback to share, \
+            or want to inquire about a custom creation, we're always here to help in any way we can. \
+            Simply fill out the form on this page and we'll get back to you as soon as possible. \
+            We value our customers and appreciate your support, \
+            and we can't wait to help you satisfy your sweet tooth with our delicious treats!`;
+        paraDiv.appendChild(para);
+
         // Create the form element
         const form = document.createElement('form');
-        form.id = 'contact-form';
+        form.id = 'contactForm';
 
         // Create the name field
-        const nameDiv = document.createElement('div');
-        const nameLabel = document.createElement('label');
-        nameLabel.textContent = 'Name:';
         const nameInput = document.createElement('input');
+        nameInput.placeholder = 'Name: '
         nameInput.type = 'text';
         nameInput.id = 'name';
         nameInput.name = 'name';
         nameInput.required = true;
-        nameDiv.appendChild(nameLabel);
-        nameDiv.appendChild(nameInput);
-        form.appendChild(nameDiv);
+        form.appendChild(nameInput);
 
         // Create the email field
-        const emailDiv = document.createElement('div');
-        const emailLabel = document.createElement('label');
-        emailLabel.textContent = 'Email:';
         const emailInput = document.createElement('input');
+        emailInput.placeholder = 'Email: '
         emailInput.type = 'email';
         emailInput.id = 'email';
         emailInput.name = 'email';
         emailInput.required = true;
-        emailDiv.appendChild(emailLabel);
-        emailDiv.appendChild(emailInput);
-        form.appendChild(emailDiv);
+        form.appendChild(emailInput);
 
         // Create the message field
-        const messageDiv = document.createElement('div');
-        const messageLabel = document.createElement('label');
-        messageLabel.textContent = 'Message:';
         const messageInput = document.createElement('textarea');
+        messageInput.placeholder = 'Type your message here...'
         messageInput.id = 'message';
         messageInput.name = 'message';
         messageInput.required = true;
-        messageDiv.appendChild(messageLabel);
-        messageDiv.appendChild(messageInput);
-        form.appendChild(messageDiv);
+        messageInput.rows = '20';
+        messageInput.cols = '60';
+        form.appendChild(messageInput);
 
         // Create the submit button
         const submitButton = document.createElement('button');
@@ -122,6 +123,7 @@ const formScreen = (() => {
         form.appendChild(submitButton);
 
         // Add the form to the content div
+        content.appendChild(paraDiv);
         content.appendChild(form);
     }
     
