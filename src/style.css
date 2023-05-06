@@ -42,6 +42,7 @@ h1 {
     display: grid;
     grid-template: 1fr / 1fr 1fr;
     background-image: url(./images/home-bread.jpg);
+    transition: background-image 1s ease-in-out;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;

@@ -5,6 +5,9 @@ import berlinerDonut from "./images/berliner.jpg"
 import bread from "./images/bread.jpg"
 import cakeTart from "./images/caketart.jpg"
 import chocoCake from "./images/chococake.jpg"
+import homeBread from"./images/home-bread.jpg"
+import homeCroissant from "./images/home-croissant.jpg"
+import homeBakery from './images/home-bakery.jpg'
 
 const heightAdjust = (() => { 
     const header = document.querySelector('header');
@@ -132,7 +135,10 @@ const formScreen = (() => {
 
 const displayController = (() => {
     const content = document.querySelector('.content');
+    const container = document.querySelector('.container');
     const productList = [];
+    const images = [homeBread , homeCroissant , homeBakery];
+    let currentImageIndex = 0;
 
     const homeBtn  = document.getElementById('homeBtn');
     const productsBtn = document.getElementById('productsBtn');
@@ -185,7 +191,16 @@ const displayController = (() => {
         contactBtn.style.backgroundColor = 'var(--bright-blue)'
     }
 
-    return { updateContent , productList }
+    function fadeBackground() {
+        setTimeout(changeImage, 1000);
+    }
+
+    function changeImage() {
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        container.style.backgroundImage = `url(${images[currentImageIndex]})`;
+    }
+
+    return { updateContent , fadeBackground , productList }
 });
 
 const display = displayController();
@@ -200,3 +215,5 @@ const tart = new Product('Cake Tart', 5.00, cakeTart);
 const chocolateCake = new Product('Chocolate Cake', 10.00, chocoCake);
 
 display.updateContent('home');
+
+setInterval(display.fadeBackground, 5000);
